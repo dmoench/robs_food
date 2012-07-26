@@ -26,8 +26,9 @@ $(document).ready(function(){
 	    mapOptions);
 
 	// Create a marker for each place
+	var place_position = addressToLatLng(json.place[0].address, fofo);
 	var marker = new google.maps.Marker({
-			position: addressToLatLng(json.place[0].address),
+			position: place_position,
 			map: map,
 			title: json.place[0].name
 		});
@@ -35,22 +36,29 @@ $(document).ready(function(){
 });
 
 /*
-	Converts string address to
+	Converts string address to LatLng object and return
 	@param address: String address
 	@return latlng: LatLng address
+	TODO - deal with asynchronisity, returns latlng before the geocode function finishes
 */
-function addressToLatLng(address)
+function addressToLatLng(address, callback)
 {
+	var geocoder;
+	var latlng;
 	geocoder = new google.maps.Geocoder();
 	geocoder.geocode({'address': address}, function(results, status)
 	{
 		if (status == google.maps.GeocoderStatus.OK) 
 		{
-			var latlng = results[0].geometry.location;
-			alert(latlng);
-			return latlng;
+			latlng = results[0].geometry.location;
 		} else {
 			alert("Geocode was not successful for the following reason: " + status);
 		}
 	});
+	callback(latlng);
+	return latlng;
+}
+
+function fofo(data) {
+	alert(data);
 }
