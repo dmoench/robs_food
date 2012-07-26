@@ -1,3 +1,24 @@
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+header h1 {
+	text-transform: uppercase;
+	font-weight: normal;
+	font-style: normal;
+	text-align: center;
+}
+
+#map_canvas {
+	width: 960px;
+	height: 720px;
+	margin: 0px auto;
+}
+
 #json_data {
 	display: none;
 }

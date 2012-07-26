@@ -5,7 +5,7 @@
 	<id></id>
 	<name></name>
 	<desc></desc>
-	<location></location>
+	<address></address>
 	<sig-dish>
 		<title></title>
 		<price></price>
@@ -19,7 +19,7 @@
 	<id>1</id>
 	<name>Big Wong</name>
 	<desc>A chinatown favorite</desc>
-	<location>67 Mott St, New York, NY 10013</location>
+	<address>67 Mott St, New York, NY 10013</address>
 	<sig-dish>
 		<title>Wonton Mein with Roast Duck</title>
 		<price>8</price>
@@ -31,7 +31,7 @@
 	<id>2</id>
 	<name>Corner 28</name>
 	<desc>A flushing favorite</desc>
-	<location>40-28 Main St, Flushing, NY 11355</location>
+	<address>40-28 Main St, Flushing, NY 11355</address>
 	<sig-dish>
 		<title>Wonton Mein</title>
 		<price>4.50</price>

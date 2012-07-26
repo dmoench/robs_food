@@ -4,9 +4,12 @@
 	<meta charset="utf-8">
 	<title>Rob's Food Map</title>
 	<meta name="description" content="Awesome new york food for under $8">
-	<meta name="viewport" content="width=device-width">
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<script	
+		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAqjzUu7XU2Z8NR1YC9tyv6EyYY7j0y6Ps&sensor=false">
+	</script>
 </head>
 
 <body>
