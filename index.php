@@ -10,6 +10,15 @@
 </head>
 
 <body>
+	<?php
+		// XML > PHP Object > JSON Object
+		$xml_string = file_get_contents('places.xml');
+		$xml_string = str_replace(array("\n", "\r", "\t"), '', $xml_string);
+		$xml_string = trim(str_replace('"', "'", $xml_string));
+		$xml_data = simplexml_load_string($xml_string);
+		$json = json_encode($xml_data);
+	?>
+	
 	<header>
 		<h1>Food in New York</h1>
 	</header>
@@ -19,15 +28,6 @@
 	<div id="json_data"><?php echo $json; ?></div>
 	
 	<footer></footer>
-
-	<?php
-		// XML > PHP Object > JSON Object
-		$xml_string = file_get_contents('places.xml');
-		$xml_string = str_replace(array("\n", "\r", "\t"), '', $xml_string);
-		$xml_string = trim(str_replace('"', "'", $xml_string));
-		$xml_data = simplexml_load_string($xml_string);
-		$json = json_encode($xml_data);
-	?>
 
  	<!-- JavaScript at the bottom for fast page loading -->
 	<script type="text/javascript">
