@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Rob's Food Map</title>
+  <meta name="description" content="Awesome new york food for under $8">
+  <meta name="viewport" content="width=device-width">
+  <link rel="stylesheet" href="css/style.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+</head>
+
+<body>
+	<header>
+		<h1>Food in New York</h1>
+	</header>
+
+	<div id="map_canvas"></div>
+
+	<div id="json_data"><?php echo $json; ?></div>
+	
+	<footer></footer>
+
+	<?php
+		// XML > PHP Object > JSON Object
+		$xml_string = file_get_contents('places.xml');
+		$xml_string = str_replace(array("\n", "\r", "\t"), '', $xml_string);
+		$xml_string = trim(str_replace('"', "'", $xml_string));
+		$xml_data = simplexml_load_string($xml_string);
+		$json = json_encode($xml_data);
+	?>
+
+ 	<!-- JavaScript at the bottom for fast page loading -->
+	<script type="text/javascript">
+		$(document).ready(function(){
+			var json_string = $('#json_data').text();
+			var json = JSON.parse(json_string);	
+			console.log(json);
+		});
+	</script>
+</body>
+</html>
