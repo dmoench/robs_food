@@ -1,11 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <title>Rob's Food Map</title>
-  <meta name="description" content="Awesome new york food for under $8">
-  <meta name="viewport" content="width=device-width">
-  <link rel="stylesheet" href="css/style.css">
+	<meta charset="utf-8">
+	<title>Rob's Food Map</title>
+	<meta name="description" content="Awesome new york food for under $8">
+	<meta name="viewport" content="width=device-width">
+	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </head>
 
@@ -20,7 +20,7 @@
 	?>
 	
 	<header>
-		<h1>Food in New York</h1>
+		<h1>Rob's NYC Food Map</h1>
 	</header>
 
 	<div id="map_canvas"></div>
@@ -30,12 +30,6 @@
 	<footer></footer>
 
  	<!-- JavaScript at the bottom for fast page loading -->
-	<script type="text/javascript">
-		$(document).ready(function(){
-			var json_string = $('#json_data').text();
-			var json = JSON.parse(json_string);	
-			console.log(json);
-		});
-	</script>
+	<script src="js/script.js"></script>
 </body>
 </html>
