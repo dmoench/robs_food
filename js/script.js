@@ -24,41 +24,36 @@ $(document).ready(function(){
 	};
 	var map = new google.maps.Map(document.getElementById("map_canvas"),
 	    mapOptions);
-
-	// Create a marker for each place
-	var place_position = addressToLatLng(json.place[0].address, fofo);
-	var marker = new google.maps.Marker({
-			position: place_position,
-			map: map,
-			title: json.place[0].name
-		});
+	
+	addressToMarker(json.place[0].address, map, addMarker);
 
 });
 
 /*
-	Converts string address to LatLng object and return
+	Accepts a string address and places it as a marker on the map
 	@param address: String address
-	@return latlng: LatLng address
-	TODO - deal with asynchronisity, returns latlng before the geocode function finishes
+	@param map: Reference to a map object
+	@param callback
 */
-function addressToLatLng(address, callback)
-{
+function addressToMarker(address, map, callback) {
 	var geocoder;
 	var latlng;
 	geocoder = new google.maps.Geocoder();
-	geocoder.geocode({'address': address}, function(results, status)
-	{
-		if (status == google.maps.GeocoderStatus.OK) 
-		{
+	geocoder.geocode({'address': address}, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
 			latlng = results[0].geometry.location;
+			callback(latlng, map);
 		} else {
 			alert("Geocode was not successful for the following reason: " + status);
 		}
 	});
-	callback(latlng);
-	return latlng;
 }
 
-function fofo(data) {
-	alert(data);
+/* Places marker on the map */
+function addMarker(latlng, map) {
+	var marker = new google.maps.Marker({
+		position: latlng,
+		map: map,
+		title: 'BIG WONG'
+	});
 }
