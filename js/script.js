@@ -2,6 +2,15 @@ $(document).ready(function(){
 	// Grab json for easy manipulation
 	var json_string = $('#json_data').text();
 	var json = JSON.parse(json_string);
+	
+	/*---------------------------------------------------------------------------*\
+		Dropdown Menu
+	\*---------------------------------------------------------------------------*/
+	// Show toggle place menu visibility
+	$('#faux-select').toggle(
+		function(){ $('#menu ul').show(); },
+		function(){ $('#menu ul').hide(); }
+	);
 
 	/*---------------------------------------------------------------------------*\
 		Google Maps

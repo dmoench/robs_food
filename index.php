@@ -5,6 +5,7 @@
 	<title>Rob's Food Map</title>
 	<meta name="description" content="Awesome new york food for under $8">
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script	
@@ -20,7 +21,6 @@
 		$xml_string = trim(str_replace('"', "'", $xml_string));
 		$xml_data = simplexml_load_string($xml_string);
 		$json = json_encode($xml_data);
-
 	?>
 	
 	<header>
@@ -30,13 +30,13 @@
 	<div id="map_canvas"></div>
 	
 	<section id="menu">
-		<div id="faux-select"></div>
+		<div id="faux-select">SELECT YOUR MEAL</div>
 		<div id="dropdown_menu">
 			<ul>
 				<?php for($i = 0; $i < count($xml_data->place); $i++): ?>
 				<li title="place_<?php echo $xml_data->place[$i]->id; ?>">
-					<?php echo $xml_data->place[$i]->name . ' ' . 
-							$xml_data->place[$i]->type; ?>
+					<?php echo $xml_data->place[$i]->name . ' (' . 
+							$xml_data->place[$i]->type . ')'; ?>
 				</li>
 				<?php endfor; ?>
 			</ul>

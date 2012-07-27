@@ -24,12 +24,29 @@ header h1 {
 section#menu {
 	width: 960px;
 	margin: 0px auto;
-	border: 1px solid gray;
+}
+
+section#menu #faux-select {
+	background: #B5B5B5;
+	width: 300px;
+	text-transform: uppercase;
+	text-align: center;
+	padding: 5px;
 }
 
 section#menu ul {
+	display: none;
 	list-style-type: none;
-	border: 1px solid;
+	background: rgba(0,0,0,0.3);
+}
+
+section#menu ul li {
+	padding: 3px 10px;
+	color: white;
+}
+
+section#menu ul li:hover {
+	background: #000;
 }
 
 #json_data {
