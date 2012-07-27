@@ -45,7 +45,7 @@ function addressToMarker(place, map, callback) {
 	geocoder.geocode({'address': place.address }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			latlng = results[0].geometry.location;
-			callback(latlng, map, place.name);
+			callback(latlng, map, place);
 		} else {
 			alert("Geocode was not successful for the following reason: " + status);
 		}
@@ -53,25 +53,36 @@ function addressToMarker(place, map, callback) {
 }
 
 /* 
-	Places marker on the map
+	Places marker on the map and sets info window overlays
 	@param latlng: LatLng position object
 	@param map: Reference to map object
-	@param name: String
+	@param place: A place object from the places json
 */
-function addMarker(latlng, map, name) {
+function addMarker(latlng, map, place) {
 	var marker = new google.maps.Marker({
 		position: latlng,
 		map: map,
-		title: name
+		title: place.name
 	});
-	google.maps.event.addListener(marker, 'click', toggleBounce);
-}
+	
+	// Create info window html
+	var info_html = '<div id="place_' + place.id + '">' +
+		'<p>Place: ' + place.name + '</p>' +
+		'</div>';
+		
+	// Create InfoWindow object
+	var info_window = new google.maps.InfoWindow({
+		content: info_html
+	});
+	
+	// Assign InfoWindow to marker
+	google.maps.event.addListener(marker, 'mouseover', function(){
+		info_window.open(map, marker);
+	});
+	
+	google.maps.event.addListener(marker, 'mouseout', function(){
+		info_window.close(map, marker);
+	});
+	
 
-function toggleBounce() {
-
-  if (marker.getAnimation() != null) {
-    marker.setAnimation(null);
-  } else {
-    marker.setAnimation(google.maps.Animation.BOUNCE);
-  }
 }
