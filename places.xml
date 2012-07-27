@@ -4,13 +4,14 @@
 <place>
 	<id></id>
 	<name></name>
+	<type></type>
 	<desc></desc>
 	<address></address>
-	<sig-dish>
+	<sig_dish>
 		<title></title>
 		<price></price>
 		<desc></desc>	
-	</sig-dish>	
+	</sig_dish>	
 </place>
 -->
 <places>
@@ -18,25 +19,27 @@
 <place>
 	<id>1</id>
 	<name>Big Wong</name>
+	<type>Chinese</type>
 	<desc>A chinatown favorite</desc>
 	<address>67 Mott St, New York, NY 10013</address>
-	<sig-dish>
+	<sig_dish>
 		<title>Wonton Mein with Roast Duck</title>
 		<price>8</price>
 		<desc>Super delicious and rich</desc>	
-	</sig-dish>	
+	</sig_dish>	
 </place>
 
 <place>
 	<id>2</id>
 	<name>Corner 28</name>
+	<type>Chinese</type>
 	<desc>A flushing favorite</desc>
 	<address>40-28 Main St, Flushing, NY 11355</address>
-	<sig-dish>
+	<sig_dish>
 		<title>Wonton Mein</title>
 		<price>4.50</price>
 		<desc>Super delicious and incredibly cheap</desc>	
-	</sig-dish>	
+	</sig_dish>	
 </place>
 
 </places>

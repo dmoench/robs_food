@@ -68,6 +68,7 @@ function addMarker(latlng, map, place) {
 	// Create info window html
 	var info_html = '<div id="place_' + place.id + '">' +
 		'<p>Place: ' + place.name + '</p>' +
+		'<p>Signature Dish: ' + place.sig_dish.title + '</p>' +
 		'</div>';
 		
 	// Create InfoWindow object
@@ -75,14 +76,11 @@ function addMarker(latlng, map, place) {
 		content: info_html
 	});
 	
-	// Assign InfoWindow to marker
+	// Assign InfoWindow animations to marker
 	google.maps.event.addListener(marker, 'mouseover', function(){
 		info_window.open(map, marker);
 	});
-	
 	google.maps.event.addListener(marker, 'mouseout', function(){
 		info_window.close(map, marker);
 	});
-	
-
 }
