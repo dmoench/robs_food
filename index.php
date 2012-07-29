@@ -34,7 +34,7 @@
 		<div id="dropdown_menu">
 			<ul>
 				<?php for($i = 0; $i < count($xml_data->place); $i++): ?>
-				<li title="place_<?php echo $xml_data->place[$i]->id; ?>">
+				<li id="<?php echo $xml_data->place[$i]->id; ?>">
 					<?php echo $xml_data->place[$i]->name . ' (' . 
 							$xml_data->place[$i]->type . ')'; ?>
 				</li>

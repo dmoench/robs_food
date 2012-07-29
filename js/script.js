@@ -11,6 +11,21 @@ $(document).ready(function(){
 		function(){ $('#menu ul').show(); },
 		function(){ $('#menu ul').hide(); }
 	);
+	
+	$('#dropdown_menu ul li').click( function(){
+		// Grab place id
+		var place_id = $(this).attr('id');
+		
+		// Update #faux-select
+		$('#faux-select').html(json.place[place_id - 1].name);
+		
+		// Update #info_block
+		
+		// Update map
+		
+		// Hide menu
+		$('#dropdown_menu').hide();
+	});
 
 	/*---------------------------------------------------------------------------*\
 		Google Maps
@@ -31,8 +46,7 @@ $(document).ready(function(){
 	  zoom: 12,
 	  mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
-	var map = new google.maps.Map(document.getElementById("map_canvas"),
-	    mapOptions);
+	var map = new google.maps.Map( document.getElementById("map_canvas"), mapOptions);
 	
 	// Place all markers on map
 	for(var i = 0; i < json.place.length; i++) {
