@@ -16,37 +16,56 @@ header h1 {
 }
 
 #map_canvas {
-	width: 960px;
-	height: 720px;
+	width: 800px;
+	height: 600px;
 	margin: 0px auto;
 }
 
 section#menu {
-	width: 960px;
+	width: 800px;
 	margin: 0px auto;
+	position: relative;
 }
 
 section#menu #faux-select {
 	background: #B5B5B5;
 	width: 300px;
+	float: left;
 	text-transform: uppercase;
 	text-align: center;
 	padding: 5px;
 }
 
-section#menu ul {
+section#menu #dropdown_menu {
 	display: none;
-	list-style-type: none;
-	background: rgba(0,0,0,0.3);
 }
 
-section#menu ul li {
-	padding: 3px 10px;
+section#menu #dropdown_menu ul {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 310px;
+	list-style-type: none;
+	background: rgba(0,0,0,0.7);
+}
+
+section#menu #dropdown_menu ul li {
+	padding: 10px 10px;
+	text-align: center;
+	text-transform: uppercase;
 	color: white;
 }
 
-section#menu ul li:hover {
+section#menu #dropdown_menu ul li:hover {
 	background: #000;
+	color: red;
+}
+
+section#menu #info_block {
+	float: right;
+	width: 480px;
+	height: 200px;
+	background: orange;
 }
 
 #json_data {
