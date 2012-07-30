@@ -41,7 +41,9 @@
 				<?php endfor; ?>
 			</ul>
 		</div>
-		<div id="info_block"></div>
+		<div id="info_block">
+			<p>Select a place on the left.</p>
+		</div>
 	</section>
 	
 	<div id="json_data"><?php echo $json; ?></div>

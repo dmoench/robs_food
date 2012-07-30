@@ -20,13 +20,16 @@ $(document).ready(function(){
 	
 	$('#dropdown_menu ul li').click( function() {
 		// Grab place id
-		var place_id = $(this).attr('id');
+		var place_id = $(this).attr('id') - 1;
 		
 		// Update #faux-select
-		$('#faux-select').html(json.place[place_id - 1].name);
+		$('#faux-select').html(json.place[place_id].name);
 		
 		// Update #info_block
-		var info_html = '<p>TODO</p>';
+		var info_html = 
+			'<p>Food Type: ' + json.place[place_id].type + '</p>' +
+			'<p>Signature Dish: ' + json.place[place_id].sig_dish.title + 
+			' ($' + json.place[place_id].sig_dish.price + ')' + '</p>';
 		$('#info_block').html(info_html);
 		
 		// Update map
