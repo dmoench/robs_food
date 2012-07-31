@@ -24,14 +24,15 @@
 	?>
 	
 	<header>
-		<h1>Rob's NYC Food Map</h1>
+		<h1>NYC Food &lt $8</h1>
 	</header>
 
 	<div id="map_canvas"></div>
 	<div id="faux-select-wrapper">
-		<div id="faux-select">Select Your Meal</div>
+		<div id="faux-select">Select A Place</div>
 		<div id="menu">
 			<ul>
+				<li id="everything">Show All</li>
 				<?php for($i = 0; $i < count($xml_data->place); $i++): ?>
 				<li id="<?php echo $xml_data->place[$i]->id; ?>">
 					<?php echo $xml_data->place[$i]->name . ' (' . 
@@ -42,9 +43,7 @@
 		</div>
 	</div>
 	
-	<div id="info_block">
-		<p>Select a place on the left.</p>
-	</div>
+	<div id="info_block"><p>Nothing Selected</p></div>
 	
 	<div id="json_data"><?php echo $json; ?></div>
 	

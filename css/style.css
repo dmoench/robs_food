@@ -13,12 +13,18 @@ header h1 {
 	font-weight: normal;
 	font-style: normal;
 	text-align: center;
+	margin: 20px;
 }
 
 #map_canvas {
 	width: 800px;
 	height: 600px;
 	margin: 0px auto;
+}
+
+#map_canvas .place-info-overlay h2 {
+	text-transform: uppercase;
+	text-align: center;
 }
 
 #faux-select-wrapper {
@@ -93,6 +99,7 @@ header h1 {
 }
 
 #info_block {
+	display: none;
 	width: 800px;
 	height: 200px;
 	margin: 0 auto;

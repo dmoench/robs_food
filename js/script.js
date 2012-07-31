@@ -40,19 +40,33 @@ $(document).ready(function(){
 			$menu.addClass('opened'); 
 		} else {
 			$menu.hide();
-			$menu.removeClass('opened'); 
+			$menu.removeClass('opened');
 		}
+		
 	});
 	
 	$('#menu ul li').click( function() {
-		// Grab place id
-		var place_id = $(this).attr('id') - 1;
+		if($(this).attr('id') == 'everything') {
+			// Reset map to show all
+			map.panTo(new google.maps.LatLng(40.714997,-73.897133));
+			map.setZoom(12);
+			
+			// Reset #faux-select and #info_block
+			$('#info_block').html('<p>Nothing Selected</p>');
+			$('#faux-select').html('Select A Place');
+			
+			// Hide info_block
+			$('#info_block').slideUp(300);
+			
+		} else {
+			// Grab place id
+			var place_id = $(this).attr('id') - 1;
 		
-		updatePageView(json.place[place_id], map);
-		
+			updatePageView(json.place[place_id], map);
+		}
 		// Hide menu
 		$('#menu').hide();
-		$('#menu').removeClass('opened'); 
+		$('#menu').removeClass('opened');
 	});
 
 }); // End document ready function
@@ -91,9 +105,8 @@ function addMarker(latlng, map, place) {
 	});
 	
 	// Create info window html
-	var info_html = '<div id="place_' + place.id + '">' +
-		'<p>Place: ' + place.name + '</p>' +
-		'<p>Signature Dish: ' + place.sig_dish.title + '</p>' +
+	var info_html = '<div class="place-info-overlay' + place.id + '">' +
+		'<h2>' + place.name + '</h2>' +
 		'</div>';
 		
 	// Create InfoWindow object
@@ -122,8 +135,24 @@ function addMarker(latlng, map, place) {
 	@param map: The map
 */
 function updatePageView(place, map) {
+	// Close #info_block
+	$('#info_block').slideUp(300);
+	
 	// Update #faux-select
 	$('#faux-select').html(place.name);
+	
+	// Update map
+	var geocoder;
+	geocoder = new google.maps.Geocoder();
+	geocoder.geocode({'address': place.address }, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			var latlng = results[0].geometry.location;
+			map.panTo(latlng);
+			map.setZoom(17);
+		} else {
+			alert("Geocode was not successful for the following reason: " + status);
+		}
+	});
 	
 	// Update #info_block
 	var info_html = 
@@ -131,20 +160,9 @@ function updatePageView(place, map) {
 		'<p>Signature Dish: ' + place.sig_dish.title + 
 		' ($' + place.sig_dish.price + ')' + '</p>';
 	$('#info_block').html(info_html);
+	$('#info_block').slideDown(300);
 	
-	// Update #faux-select
-	$('#faux-select').html(place.name);
-	
-	// TODO Update map
-	var geocoder;
-	geocoder = new google.maps.Geocoder();
-	geocoder.geocode({'address': place.address }, function(results, status) {
-		if (status == google.maps.GeocoderStatus.OK) {
-			var latlng = results[0].geometry.location;
-			map.setCenter(latlng);
-			map.setZoom(17);
-		} else {
-			alert("Geocode was not successful for the following reason: " + status);
-		}
-	});
+	// Todo set marker animation to BOUNCE. Will involve passing the marker to the method,
+	// which will involve finding out how to access the available markers based on knowing
+	// the place object
 }
