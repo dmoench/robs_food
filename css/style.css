@@ -45,40 +45,12 @@ header h1 {
 	bottom: 0px;
 	left: 0px;
 	background: #fff;
-	width: 300px;
+	width: 298px;
 	text-transform: uppercase;
 	text-align: center;
 	padding: 10px 10px;
-/*	border-style: solid;
-	border-width: 0 0 10px 10px;
-	border-color: transparent transparent #A6781E #FFC85B;*/
+	border: solid 1px #666;
 }
-
-/* Top left corner */
-/*#faux-select-wrapper #faux-select:before {
-	content: "";
-	position: absolute;
-	height: 0;
-	width: 0;
-	top: 0px;
-	left: -10px;
-	border-style: solid;
-	border-width: 5px;
-	border-color: #fff transparent transparent #fff;
-}*/
-
-/* Bottom right corner */
-/*#faux-select-wrapper #faux-select:after {
-	content: "";
-	position: absolute;
-	height: 0;
-	width: 0;
-	bottom: -10px;
-	right: 0px;
-	border-style: solid;
-	border-width: 5px;
-	border-color: transparent #B5C4D0 #B5C4D0 transparent;
-}*/
 
 #faux-select-wrapper #menu {
 	display: none;
@@ -107,10 +79,18 @@ header h1 {
 
 #info_block {
 	display: none;
-	width: 800px;
+	width: 798px;
 	height: 200px;
 	margin: 0 auto;
-	background: #B5C4D0;
+	border: solid 1px #666;
+}
+
+#info_block .content {
+	padding: 30px;
+}
+
+#info_block .content p {
+	line-height: 140%;
 }
 
 #json_data {

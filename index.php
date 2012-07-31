@@ -43,7 +43,11 @@
 		</div>
 	</div>
 	
-	<div id="info_block"><p>Nothing Selected</p></div>
+	<div id="info_block">
+		<div class="content">
+			<p>Nothing Selected</p>
+		</div>
+	</div>
 	
 	<div id="json_data"><?php echo $json; ?></div>
 	

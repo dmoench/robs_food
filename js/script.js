@@ -1,3 +1,5 @@
+var markers = new Array(); // Array to store marker references
+
 $(document).ready(function(){
 	// Grab json for easy manipulation
 	var json_string = $('#json_data').text();
@@ -47,12 +49,14 @@ $(document).ready(function(){
 	
 	$('#menu ul li').click( function() {
 		if($(this).attr('id') == 'everything') {
+			stopAllBouncing();
+			
 			// Reset map to show all
 			map.panTo(new google.maps.LatLng(40.714997,-73.897133));
 			map.setZoom(12);
 			
 			// Reset #faux-select and #info_block
-			$('#info_block').html('<p>Nothing Selected</p>');
+			$('#info_block .content').html('<p>Nothing Selected</p>');
 			$('#faux-select').html('Select A Place');
 			
 			// Hide info_block
@@ -98,11 +102,16 @@ function addressToMarker(place, map, callback) {
 	@param place: A place object from the places json
 */
 function addMarker(latlng, map, place) {
+	// Instantiate marker
 	var marker = new google.maps.Marker({
 		position: latlng,
 		map: map,
 		title: place.name
 	});
+	
+	// Add to markers array for later reference
+	var marker_id = place.id;
+	markers[marker_id] = marker;
 	
 	// Create info window html
 	var info_html = '<div class="place-info-overlay">' + 
@@ -142,27 +151,43 @@ function updatePageView(place, map) {
 	$('#faux-select').html(place.name);
 	
 	// Update map
+	stopAllBouncing();
 	var geocoder;
 	geocoder = new google.maps.Geocoder();
 	geocoder.geocode({'address': place.address }, function(results, status) {
 		if (status == google.maps.GeocoderStatus.OK) {
 			var latlng = results[0].geometry.location;
 			map.panTo(latlng);
-			map.setZoom(17);
+			map.setZoom(15);
 		} else {
 			alert("Geocode was not successful for the following reason: " + status);
 		}
 	});
+	markers[place.id].setAnimation(google.maps.Animation.BOUNCE);
 	
 	// Update #info_block
 	var info_html = 
 		'<p>Food Type: ' + place.type + '</p>' +
-		'<p>Signature Dish: ' + place.sig_dish.title + 
-		' ($' + place.sig_dish.price + ')' + '</p>';
-	$('#info_block').html(info_html);
+		'<p>Killer Dish: ' + place.sig_dish.title + '</p>' + 
+		'<ul><li>$' + place.sig_dish.price + '</li>' + 
+		'<li>' + place.sig_dish.desc + '</li></ul>' +
+		'<p>Address: ' + place.address + '</p>' +
+		'<p>Description: ' + place.description + '</p>';
+	$('#info_block .content').html(info_html);
 	$('#info_block').slideDown(300);
 	
 	// Todo set marker animation to BOUNCE. Will involve passing the marker to the method,
 	// which will involve finding out how to access the available markers based on knowing
 	// the place object
+}
+
+/*
+	Stops all markers in the global markers array from bouncing
+*/
+function stopAllBouncing() {
+	console.log(markers);
+	for(var i = 1; i < markers.length; i++) {
+		markers[i].setAnimation(null);
+		console.log(markers[i].title);
+	}
 }
