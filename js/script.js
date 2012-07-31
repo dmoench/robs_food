@@ -2,42 +2,6 @@ $(document).ready(function(){
 	// Grab json for easy manipulation
 	var json_string = $('#json_data').text();
 	var json = JSON.parse(json_string);
-	
-	/*---------------------------------------------------------------------------*\
-		Dropdown Menu
-	\*---------------------------------------------------------------------------*/
-	// Show toggle place menu visibility
-	$('#faux-select').click( function() { 
-		var $menu = $('#menu');
-		if(!$menu.hasClass('opened')) {
-			$menu.show();
-			$menu.addClass('opened'); 
-		} else {
-			$menu.hide();
-			$menu.removeClass('opened'); 
-		}
-	});
-	
-	$('#menu ul li').click( function() {
-		// Grab place id
-		var place_id = $(this).attr('id') - 1;
-		
-		// Update #faux-select
-		$('#faux-select').html(json.place[place_id].name);
-		
-		// Update #info_block
-		var info_html = 
-			'<p>Food Type: ' + json.place[place_id].type + '</p>' +
-			'<p>Signature Dish: ' + json.place[place_id].sig_dish.title + 
-			' ($' + json.place[place_id].sig_dish.price + ')' + '</p>';
-		$('#info_block').html(info_html);
-		
-		// Update map
-		
-		// Hide menu
-		$('#menu').hide();
-		$('#menu').removeClass('opened'); 
-	});
 
 	/*---------------------------------------------------------------------------*\
 		Google Maps
@@ -64,8 +28,34 @@ $(document).ready(function(){
 	for(var i = 0; i < json.place.length; i++) {
 		addressToMarker(json.place[i], map, addMarker);
 	}
+	
+	/*---------------------------------------------------------------------------*\
+		Dropdown Menu
+	\*---------------------------------------------------------------------------*/
+	// Show toggle place menu visibility
+	$('#faux-select').click( function() { 
+		var $menu = $('#menu');
+		if(!$menu.hasClass('opened')) {
+			$menu.show();
+			$menu.addClass('opened'); 
+		} else {
+			$menu.hide();
+			$menu.removeClass('opened'); 
+		}
+	});
+	
+	$('#menu ul li').click( function() {
+		// Grab place id
+		var place_id = $(this).attr('id') - 1;
+		
+		updatePageView(json.place[place_id], map);
+		
+		// Hide menu
+		$('#menu').hide();
+		$('#menu').removeClass('opened'); 
+	});
 
-});
+}); // End document ready function
 
 /*
 	Accepts a string address and places it as a marker on the map
@@ -117,5 +107,44 @@ function addMarker(latlng, map, place) {
 	});
 	google.maps.event.addListener(marker, 'mouseout', function(){
 		info_window.close(map, marker);
+	});
+	
+	// Add updateInfoBlock() to marker clicks
+	google.maps.event.addListener(marker, 'click', function(){
+		updatePageView(place, map);
+	});
+}
+
+/*
+	Updates the #info_block, #faux_select, and zooms the map in on the marker
+	based on the passed in place object
+	@param place: A place object
+	@param map: The map
+*/
+function updatePageView(place, map) {
+	// Update #faux-select
+	$('#faux-select').html(place.name);
+	
+	// Update #info_block
+	var info_html = 
+		'<p>Food Type: ' + place.type + '</p>' +
+		'<p>Signature Dish: ' + place.sig_dish.title + 
+		' ($' + place.sig_dish.price + ')' + '</p>';
+	$('#info_block').html(info_html);
+	
+	// Update #faux-select
+	$('#faux-select').html(place.name);
+	
+	// TODO Update map
+	var geocoder;
+	geocoder = new google.maps.Geocoder();
+	geocoder.geocode({'address': place.address }, function(results, status) {
+		if (status == google.maps.GeocoderStatus.OK) {
+			var latlng = results[0].geometry.location;
+			map.setCenter(latlng);
+			map.setZoom(17);
+		} else {
+			alert("Geocode was not successful for the following reason: " + status);
+		}
 	});
 }
