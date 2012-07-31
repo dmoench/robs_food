@@ -105,7 +105,7 @@ function addMarker(latlng, map, place) {
 	});
 	
 	// Create info window html
-	var info_html = '<div class="place-info-overlay' + place.id + '">' +
+	var info_html = '<div class="place-info-overlay">' + 
 		'<h2>' + place.name + '</h2>' +
 		'</div>';
 		

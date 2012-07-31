@@ -22,9 +22,16 @@ header h1 {
 	margin: 0px auto;
 }
 
+#map_canvas .place-info-overlay {
+	overflow: hidden;
+	width: 150px;
+	margin: 0 auto;
+}
+
 #map_canvas .place-info-overlay h2 {
-	text-transform: uppercase;
+	font-size: 17pt;
 	text-align: center;
+	text-transform: uppercase;
 }
 
 #faux-select-wrapper {
