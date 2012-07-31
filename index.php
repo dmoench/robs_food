@@ -28,10 +28,9 @@
 	</header>
 
 	<div id="map_canvas"></div>
-	
-	<section id="menu">
-		<div id="faux-select">SELECT YOUR MEAL</div>
-		<div id="dropdown_menu">
+	<div id="faux-select-wrapper">
+		<div id="faux-select">Select Your Meal</div>
+		<div id="menu">
 			<ul>
 				<?php for($i = 0; $i < count($xml_data->place); $i++): ?>
 				<li id="<?php echo $xml_data->place[$i]->id; ?>">
@@ -41,10 +40,11 @@
 				<?php endfor; ?>
 			</ul>
 		</div>
-		<div id="info_block">
-			<p>Select a place on the left.</p>
-		</div>
-	</section>
+	</div>
+	
+	<div id="info_block">
+		<p>Select a place on the left.</p>
+	</div>
 	
 	<div id="json_data"><?php echo $json; ?></div>
 	

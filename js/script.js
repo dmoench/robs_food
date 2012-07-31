@@ -8,7 +8,7 @@ $(document).ready(function(){
 	\*---------------------------------------------------------------------------*/
 	// Show toggle place menu visibility
 	$('#faux-select').click( function() { 
-		var $menu = $('#menu #dropdown_menu');
+		var $menu = $('#menu');
 		if(!$menu.hasClass('opened')) {
 			$menu.show();
 			$menu.addClass('opened'); 
@@ -18,7 +18,7 @@ $(document).ready(function(){
 		}
 	});
 	
-	$('#dropdown_menu ul li').click( function() {
+	$('#menu ul li').click( function() {
 		// Grab place id
 		var place_id = $(this).attr('id') - 1;
 		
@@ -35,8 +35,8 @@ $(document).ready(function(){
 		// Update map
 		
 		// Hide menu
-		$('#dropdown_menu').hide();
-		$('#dropdown_menu').removeClass('opened'); 
+		$('#menu').hide();
+		$('#menu').removeClass('opened'); 
 	});
 
 	/*---------------------------------------------------------------------------*\
