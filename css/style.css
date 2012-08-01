@@ -14,6 +14,7 @@ header h1 {
 	font-weight: normal;
 	font-style: normal;
 	text-align: center;
+	font-size: 20pt;
 	margin: 20px;
 }
 
@@ -49,12 +50,17 @@ header h1 {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
-	background: #fff;
-	width: 298px;
+	background: #000;
+	color: #fff;
+	width: 300px;
 	text-transform: uppercase;
 	text-align: center;
+	font-weight: bold;
 	padding: 10px 10px;
-	border: solid 1px #666;
+}
+
+#faux-select-wrapper #faux-select:hover {
+	color: #FF7373;
 }
 
 #faux-select-wrapper #menu {
@@ -74,12 +80,13 @@ header h1 {
 	padding: 10px 10px;
 	text-align: center;
 	text-transform: uppercase;
+	font-weight: bold;
 	color: white;
 }
 
 #faux-select-wrapper #menu ul li:hover {
 	background: #000;
-	color: red;
+	color: #FF7373;
 }
 
 #info_block {
@@ -100,9 +107,24 @@ header h1 {
 	float: left;
 }
 
+#info_block .content .left h3 {
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+
+#info_block .content .left p {
+	color: #666;
+}
+
 #info_block .content .right {
 	width: 350px;
 	float: right;
+	color: #666;
+}
+
+#info_block .content .right .type {
+	font-style: italic;
+	padding-bottom: 15px;
 }
 
 #info_block .content p {

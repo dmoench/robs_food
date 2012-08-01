@@ -181,9 +181,8 @@ function updatePageView(place, map) {
 	
 	// Update #info_block
 	var info_html = 
-		'<div class="left"><h3>' + place.sig_dish.title + '</h3><ul>' +
-		'<li>$' + place.sig_dish.price + '</li>' +
-		'<li>' + place.sig_dish.desc + '</li></ul></div>' +
+		'<div class="left"><h3>' + place.sig_dish.title + ' - $' + place.sig_dish.price  +
+		'</h3><p>' + place.sig_dish.desc + '</p></div>' +
 		'<div class="right"><div class="type">' + place.type + '</div>' +
 		'<p>' + place.address + '</p></div>';
 	
