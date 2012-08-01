@@ -11,35 +11,95 @@
 		<title></title>
 		<price></price>
 		<desc></desc>	
-	</sig_dish>	
+	</sig_dish>
+	<yelp-link></yelp-link>
 </place>
 -->
+
 <places>
 
 <place>
 	<id>1</id>
 	<name>Big Wong</name>
 	<type>Chinese</type>
-	<desc>A chinatown favorite</desc>
+	<desc>A chinatown favorite.</desc>
 	<address>67 Mott St, New York, NY 10013</address>
 	<sig_dish>
 		<title>Wonton Mein with Roast Duck</title>
-		<price>8</price>
+		<price>8.00</price>
 		<desc>Super delicious and rich</desc>	
-	</sig_dish>	
+	</sig_dish>
+	<yelp-link>http://www.yelp.com/biz/big-wong-king-new-york</yelp-link>
 </place>
 
 <place>
 	<id>2</id>
 	<name>Corner 28</name>
 	<type>Chinese</type>
-	<desc>A flushing favorite</desc>
+	<desc>A flushing favorite.</desc>
 	<address>40-28 Main St, Flushing, NY 11355</address>
 	<sig_dish>
 		<title>Wonton Mein</title>
 		<price>4.50</price>
 		<desc>Super delicious and incredibly cheap</desc>	
-	</sig_dish>	
+	</sig_dish>
+	<yelp-link>http://www.yelp.com/biz/corner-28-flushing</yelp-link>
+</place>
+
+<place>
+	<id>3</id>
+	<name>Bedouin Tent</name>
+	<type>Middle Eastern</type>
+	<desc>The pita bread is freshly baked and delicious.</desc>
+	<address>405 Atlantic Ave, Brooklyn, NY 11217</address>
+	<sig_dish>
+		<title>Falafel Sandwich</title>
+		<price>4.50</price>
+		<desc>Baws pita bread</desc>	
+	</sig_dish>
+	<yelp-link>http://www.yelp.com/biz/bedouin-tent-restaurant-brooklyn</yelp-link>
+</place>
+
+<place>
+	<id>4</id>
+	<name>53rd and 6th</name>
+	<type>Halal, Food Cart</type>
+	<desc>The greatest Halal chicken and rice in NYC</desc>
+	<address>6th Ave And W 53rd St, New York, NY 10019</address>
+	<sig_dish>
+		<title>Chicken And Rice</title>
+		<price>6.00</price>
+		<desc>The greatest</desc>	
+	</sig_dish>
+	<yelp-link>http://www.yelp.com/biz/53rd-and-6th-halal-cart-new-york#query:halal</yelp-link>
+</place>
+
+<place>
+	<id>5</id>
+	<name>Dosa Cart</name>
+	<type>Indian, Food Cart</type>
+	<desc></desc>
+	<address>50 Washington Sq S, New York, NY 10014</address>
+	<sig_dish>
+		<title>Masala Dosa</title>
+		<price>5.00</price>
+		<desc>Cheap Dosas!</desc>	
+	</sig_dish>
+	<yelp-link>http://www.yelp.com/biz/ny-dosas-new-york#query:ny%20dosa</yelp-link>
+</place>
+
+<place>
+	<id>6</id>
+	<name>Hanco's'</name>
+	<type>Vietnamese</type>
+	<desc>You are missing out until you have had the shredded white meat spicy chicken vietnamese sandwich.</desc>
+	<address>85 Bergen St, Brooklyn, NY 11201</address>
+	<sig_dish>
+		<title>Ban Minh Sandwich</title>
+		<price>6.00</price>
+		<desc>"I have never had banh mi like this."</desc>	
+	</sig_dish>
+	<yelp-link>http://www.yelp.com/biz/hancos-brooklyn</yelp-link>
 </place>
 
 </places>

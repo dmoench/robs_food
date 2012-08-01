@@ -135,6 +135,11 @@ function addMarker(latlng, map, place) {
 	// Add updateInfoBlock() to marker clicks
 	google.maps.event.addListener(marker, 'click', function(){
 		updatePageView(place, map);
+		var $menu = $('#menu');
+		if($menu.hasClass('opened')) {
+			$menu.hide();
+			$menu.removeClass('opened');
+		}
 	});
 }
 
@@ -176,12 +181,12 @@ function updatePageView(place, map) {
 	
 	// Update #info_block
 	var info_html = 
-		'<p>Food Type: ' + place.type + '</p>' +
-		'<p>Killer Dish:</p>' + 
-		'<ul><li>' + place.sig_dish.title + '</li>' +
-		'<li>$' + place.sig_dish.price + '</li>' + 
-		'<li>' + place.sig_dish.desc + '</li></ul>' +
-		'<p>Description: ' + place.desc + '</p>';
+		'<div class="left"><h3>' + place.sig_dish.title + '</h3><ul>' +
+		'<li>$' + place.sig_dish.price + '</li>' +
+		'<li>' + place.sig_dish.desc + '</li></ul></div>' +
+		'<div class="right"><div class="type">' + place.type + '</div>' +
+		'<p>' + place.address + '</p></div>';
+	
 	$('#info_block .content').html(info_html);
 	$('#info_block').slideDown(300);
 }

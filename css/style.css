@@ -84,14 +84,25 @@ header h1 {
 
 #info_block {
 	display: none;
+	overflow: hidden;
 	width: 798px;
-	height: 200px;
+	height: 120px;
 	margin: 0 auto;
 	border: solid 1px #666;
 }
 
 #info_block .content {
 	padding: 30px;
+}
+
+#info_block .content .left {
+	width: 350px;
+	float: left;
+}
+
+#info_block .content .right {
+	width: 350px;
+	float: right;
 }
 
 #info_block .content p {
