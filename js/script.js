@@ -187,8 +187,10 @@ function updatePageView(place, map) {
 	var info_html = 
 		'<div class="left"><h3>' + place.sig_dish.title + ' - $' + place.sig_dish.price  +
 		'</h3><p>' + place.sig_dish.desc + '</p>' +
-		'<a href="' + place.yelp_link + '" target="_blank">' + 'YELP</a></div>' +
-		'<div class="right"><div class="type">' + place.type + '</div>' +
+		'</div>' +
+		'<div class="right">' +
+		'<div class="yelp_wrapper"><a href="' + place.yelp_link + '" target="_blank"></a></div>' +
+		'<div class="type">' + place.type + '</div>' +
 		'<p>' + place.address + '</p>' +
 		'</div>';
 	
