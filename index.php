@@ -7,6 +7,7 @@
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" href="css/style.css">
+	<link href='http://fonts.googleapis.com/css?family=Karla' rel='stylesheet' type='text/css'>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 	<script	
 		src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAqjzUu7XU2Z8NR1YC9tyv6EyYY7j0y6Ps&sensor=false">

@@ -2,6 +2,7 @@
 
 html {
 	height: 100%;
+	font-family: 'Karla', sans-serif;
 }
 
 body {
@@ -24,14 +25,18 @@ header h1 {
 
 #map_canvas .place-info-overlay {
 	overflow: hidden;
+	text-align: center;
 	width: 150px;
 	margin: 0 auto;
 }
 
 #map_canvas .place-info-overlay h2 {
-	font-size: 17pt;
-	text-align: center;
+	font-size: 15pt;
 	text-transform: uppercase;
+}
+
+#map_canvas .place-info-overlay p {
+	font-size: 11pt;
 }
 
 #faux-select-wrapper {

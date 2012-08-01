@@ -1,4 +1,5 @@
 var markers = new Array(); // Array to store marker references
+var infoWindows = new Array(); // Array to store info windows
 
 $(document).ready(function(){
 	// Grab json for easy manipulation
@@ -13,16 +14,16 @@ $(document).ready(function(){
 	var useragent = navigator.userAgent;
 	var mapdiv = document.getElementById("map_canvas");
 
-	if (useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
-	  mapdiv.style.width = '100%';
-	  mapdiv.style.height = '100%';
+	if(useragent.indexOf('iPhone') != -1 || useragent.indexOf('Android') != -1 ) {
+		mapdiv.style.width = '100%';
+		mapdiv.style.height = '100%';
 	} 
 	
 	// Initialize the map
 	var mapOptions = {
-	  center: new google.maps.LatLng(40.714997,-73.897133),
-	  zoom: 12,
-	  mapTypeId: google.maps.MapTypeId.ROADMAP
+		center: new google.maps.LatLng(40.714997,-73.897133),
+		zoom: 12,
+		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map( document.getElementById("map_canvas"), mapOptions);
 	
@@ -44,12 +45,12 @@ $(document).ready(function(){
 			$menu.hide();
 			$menu.removeClass('opened');
 		}
-		
 	});
 	
 	$('#menu ul li').click( function() {
 		if($(this).attr('id') == 'everything') {
 			stopAllBouncing();
+			closeAllInfoWindows();
 			
 			// Reset map to show all
 			map.panTo(new google.maps.LatLng(40.714997,-73.897133));
@@ -65,7 +66,7 @@ $(document).ready(function(){
 		} else {
 			// Grab place id
 			var place_id = $(this).attr('id') - 1;
-		
+
 			updatePageView(json.place[place_id], map);
 		}
 		// Hide menu
@@ -75,12 +76,12 @@ $(document).ready(function(){
 
 }); // End document ready function
 
-/*
+/*---------------------------------------------------------------------------*\
 	Accepts a string address and places it as a marker on the map
 	@param place: A place object from the places json
 	@param map: Reference to map object
 	@param callback - call the addMarker function
-*/
+\*---------------------------------------------------------------------------*/
 function addressToMarker(place, map, callback) {
 	var geocoder;
 	var latlng;
@@ -95,12 +96,12 @@ function addressToMarker(place, map, callback) {
 	});
 }
 
-/* 
+/*---------------------------------------------------------------------------*\ 
 	Places marker on the map and sets info window overlays
 	@param latlng: LatLng position object
 	@param map: Reference to map object
 	@param place: A place object from the places json
-*/
+\*---------------------------------------------------------------------------*/
 function addMarker(latlng, map, place) {
 	// Instantiate marker
 	var marker = new google.maps.Marker({
@@ -118,7 +119,7 @@ function addMarker(latlng, map, place) {
 		'<h2>' + place.name + '</h2>' +
 		'</div>';
 		
-	// Create InfoWindow object
+	// Create InfoWindow object and store in array
 	var info_window = new google.maps.InfoWindow({
 		content: info_html
 	});
@@ -137,12 +138,12 @@ function addMarker(latlng, map, place) {
 	});
 }
 
-/*
+/*---------------------------------------------------------------------------*\
 	Updates the #info_block, #faux_select, and zooms the map in on the marker
 	based on the passed in place object
 	@param place: A place object
 	@param map: The map
-*/
+\*---------------------------------------------------------------------------*/
 function updatePageView(place, map) {
 	// Close #info_block
 	$('#info_block').slideUp(300);
@@ -152,6 +153,7 @@ function updatePageView(place, map) {
 	
 	// Update map
 	stopAllBouncing();
+	closeAllInfoWindows();
 	var geocoder;
 	geocoder = new google.maps.Geocoder();
 	geocoder.geocode({'address': place.address }, function(results, status) {
@@ -165,29 +167,42 @@ function updatePageView(place, map) {
 	});
 	markers[place.id].setAnimation(google.maps.Animation.BOUNCE);
 	
+	// Show infoWindow on map
+	var info_html = '<div class="place-info-overlay"><h2>' + place.name + 
+		'</h2><p>' + place.address + '</p></div>';
+	var info_window = new google.maps.InfoWindow({ content: info_html });
+	info_window.open(map, markers[place.id]);
+	infoWindows.push(info_window);
+	
 	// Update #info_block
 	var info_html = 
 		'<p>Food Type: ' + place.type + '</p>' +
-		'<p>Killer Dish: ' + place.sig_dish.title + '</p>' + 
-		'<ul><li>$' + place.sig_dish.price + '</li>' + 
+		'<p>Killer Dish:</p>' + 
+		'<ul><li>' + place.sig_dish.title + '</li>' +
+		'<li>$' + place.sig_dish.price + '</li>' + 
 		'<li>' + place.sig_dish.desc + '</li></ul>' +
-		'<p>Address: ' + place.address + '</p>' +
-		'<p>Description: ' + place.description + '</p>';
+		'<p>Description: ' + place.desc + '</p>';
 	$('#info_block .content').html(info_html);
 	$('#info_block').slideDown(300);
-	
-	// Todo set marker animation to BOUNCE. Will involve passing the marker to the method,
-	// which will involve finding out how to access the available markers based on knowing
-	// the place object
 }
 
-/*
+/*---------------------------------------------------------------------------*\
 	Stops all markers in the global markers array from bouncing
-*/
+\*---------------------------------------------------------------------------*/
 function stopAllBouncing() {
-	console.log(markers);
 	for(var i = 1; i < markers.length; i++) {
 		markers[i].setAnimation(null);
-		console.log(markers[i].title);
 	}
+}
+
+/*---------------------------------------------------------------------------*\
+	Closes all info windows on the given map and clears the infoWindows array
+\*---------------------------------------------------------------------------*/
+function closeAllInfoWindows() {
+	for(var i = 0; i < infoWindows.length; i++) {
+		var info_window = infoWindows[i];
+		console.log(info_window);
+		info_window.close();
+	}
+	infoWindows.length = 0; // CLear the array out
 }
