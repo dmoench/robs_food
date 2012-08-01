@@ -102,13 +102,13 @@ header h1 {
 	display: none;
 	overflow: hidden;
 	width: 792px;
-	min-height: 100px;
 	margin: 0 auto;
 	border: 4px solid #AFADAE;
 }
 
 #info_block .content {
 	padding: 30px;
+	overflow: hidden;
 }
 
 #info_block .content .left {
@@ -123,6 +123,20 @@ header h1 {
 
 #info_block .content .left p {
 	color: #666;
+	margin-bottom: 22px;
+}
+
+#info_block .content .left a {
+	background: #F2453C;
+	padding: 5px;
+	text-decoration: none;
+	font-weight: bold;
+	color: #fff;
+	margin-bottom: 15px;
+}
+
+#info_block .content .left a:hover {
+	color: #000;
 }
 
 #info_block .content .right {

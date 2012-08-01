@@ -12,7 +12,7 @@
 		<price></price>
 		<desc></desc>	
 	</sig_dish>
-	<yelp-link></yelp-link>
+	<yelp_link></yelp_link>
 </place>
 -->
 
@@ -29,7 +29,7 @@
 		<price>8.00</price>
 		<desc>Super delicious and rich</desc>	
 	</sig_dish>
-	<yelp-link>http://www.yelp.com/biz/big-wong-king-new-york</yelp-link>
+	<yelp_link>http://www.yelp.com/biz/big-wong-king-new-york</yelp_link>
 </place>
 
 <place>
@@ -41,9 +41,11 @@
 	<sig_dish>
 		<title>Wonton Mein</title>
 		<price>4.50</price>
-		<desc>Super delicious and incredibly cheap</desc>	
+		<desc>Super delicious and incredibly cheap and will make you want
+			to just eat and eat until you fall asleep and even then you'll
+			just dream about eating more of that.</desc>	
 	</sig_dish>
-	<yelp-link>http://www.yelp.com/biz/corner-28-flushing</yelp-link>
+	<yelp_link>http://www.yelp.com/biz/corner-28-flushing</yelp_link>
 </place>
 
 <place>
@@ -57,7 +59,7 @@
 		<price>4.50</price>
 		<desc>Baws pita bread</desc>	
 	</sig_dish>
-	<yelp-link>http://www.yelp.com/biz/bedouin-tent-restaurant-brooklyn</yelp-link>
+	<yelp_link>http://www.yelp.com/biz/bedouin-tent-restaurant-brooklyn</yelp_link>
 </place>
 
 <place>
@@ -71,7 +73,7 @@
 		<price>6.00</price>
 		<desc>The greatest</desc>	
 	</sig_dish>
-	<yelp-link>http://www.yelp.com/biz/53rd-and-6th-halal-cart-new-york#query:halal</yelp-link>
+	<yelp_link>http://www.yelp.com/biz/53rd-and-6th-halal-cart-new-york#query:halal</yelp_link>
 </place>
 
 <place>
@@ -85,7 +87,7 @@
 		<price>5.00</price>
 		<desc>Cheap Dosas!</desc>	
 	</sig_dish>
-	<yelp-link>http://www.yelp.com/biz/ny-dosas-new-york#query:ny%20dosa</yelp-link>
+	<yelp_link>http://www.yelp.com/biz/ny-dosas-new-york#query:ny%20dosa</yelp_link>
 </place>
 
 <place>
@@ -99,7 +101,7 @@
 		<price>6.00</price>
 		<desc>"I have never had banh mi like this."</desc>	
 	</sig_dish>
-	<yelp-link>http://www.yelp.com/biz/hancos-brooklyn</yelp-link>
+	<yelp_link>http://www.yelp.com/biz/hancos-brooklyn</yelp_link>
 </place>
 
 </places>
