@@ -22,7 +22,7 @@ $(document).ready(function(){
 	// Initialize the map
 	var mapOptions = {
 		center: new google.maps.LatLng(40.714997,-73.897133),
-		zoom: 12,
+		zoom: 11,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};
 	var map = new google.maps.Map( document.getElementById("map_canvas"), mapOptions);
@@ -115,13 +115,14 @@ function addMarker(latlng, map, place) {
 	markers[marker_id] = marker;
 	
 	// Create info window html
-	var info_html = '<div class="place-info-overlay">' + 
-		'<h2>' + place.name + '</h2>' +
-		'</div>';
+	var info_html = '<div class="place-info-overlay"><h2>' + place.name + 
+		'</h2><p class="type">' + place.type + '</p>' +
+		'<p>' + place.sig_dish.title + '</p></div>';
 		
 	// Create InfoWindow object and store in array
 	var info_window = new google.maps.InfoWindow({
-		content: info_html
+		content: info_html,
+		disableAutoPan: true
 	});
 	
 	// Assign InfoWindow animations to marker
@@ -175,7 +176,10 @@ function updatePageView(place, map) {
 	// Show infoWindow on map
 	var info_html = '<div class="place-info-overlay"><h2>' + place.name + 
 		'</h2><p>' + place.address + '</p></div>';
-	var info_window = new google.maps.InfoWindow({ content: info_html });
+	var info_window = new google.maps.InfoWindow({ 
+		content: info_html,
+		disableAutoPan: true
+	});
 	info_window.open(map, markers[place.id]);
 	infoWindows.push(info_window);
 	

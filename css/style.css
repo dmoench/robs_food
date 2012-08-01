@@ -33,11 +33,20 @@ header h1 {
 
 #map_canvas .place-info-overlay h2 {
 	font-size: 15pt;
+	padding-bottom: 5px;
 	text-transform: uppercase;
 }
 
 #map_canvas .place-info-overlay p {
 	font-size: 11pt;
+	color: #666;
+}
+
+#map_canvas .place-info-overlay p.type {
+	font-style: italic;
+	font-weight: bold;
+	color: #838283;
+	padding-bottom: 7px;
 }
 
 #faux-select-wrapper {
@@ -92,10 +101,10 @@ header h1 {
 #info_block {
 	display: none;
 	overflow: hidden;
-	width: 798px;
-	height: 120px;
+	width: 792px;
+	min-height: 100px;
 	margin: 0 auto;
-	border: solid 1px #666;
+	border: 4px solid #AFADAE;
 }
 
 #info_block .content {
@@ -124,6 +133,7 @@ header h1 {
 
 #info_block .content .right .type {
 	font-style: italic;
+	font-weight: bold;
 	padding-bottom: 15px;
 }
 
