@@ -30,10 +30,19 @@
 
 	<div id="map_canvas"></div>
 	<div id="faux-select-wrapper">
-		<div id="faux-select">Select A Place</div>
-		<div id="menu">
+		<div id="borough-select">Find A Place</div>
+		<div id="borough-menu">
 			<ul>
 				<li id="everything">Show All</li>
+				<li>Manhattan</li>
+				<li>Brooklyn</li>
+				<li>Queens</li>
+				<li>Bronx</li>
+			</ul>
+		</div>
+		<div id="place-selected"></div>
+		<div id="place-menu">
+			<ul>
 				<?php for($i = 0; $i < count($xml_data->place); $i++): ?>
 				<li id="<?php echo $xml_data->place[$i]->id; ?>">
 					<?php echo $xml_data->place[$i]->name . ' (' . 

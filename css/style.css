@@ -55,7 +55,20 @@ header h1 {
 	width: 800px;
 }
 
-#faux-select-wrapper #faux-select {
+#faux-select-wrapper #borough-menu {
+	display: none;
+}
+
+#faux-select-wrapper #borough-menu ul {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 320px;
+	list-style-type: none;
+	background: rgba(0,0,0,0.8);
+}
+
+#faux-select-wrapper #borough-select {
 	position: absolute;
 	bottom: 0px;
 	left: 0px;
@@ -68,24 +81,39 @@ header h1 {
 	padding: 10px 10px;
 }
 
-#faux-select-wrapper #faux-select:hover {
+#faux-select-wrapper #borough-select:hover {
 	color: #FF7373;
 }
 
-#faux-select-wrapper #menu {
+#faux-select-wrapper #place-selected {
+	display: none;
+	position: absolute;
+	bottom: 0px;
+	left: 320px;
+	background: #000;
+	color: #fff;
+	width: 300px;
+	text-transform: uppercase;
+	text-align: center;
+	font-weight: bold;
+	padding: 10px 10px;
+}
+
+#faux-select-wrapper #place-menu {
 	display: none;
 }
 
-#faux-select-wrapper #menu ul {
+#faux-select-wrapper #place-menu ul {
 	position: absolute;
 	bottom: 0;
-	left: 0;
+	left: 320px;
 	width: 320px;
 	list-style-type: none;
 	background: rgba(0,0,0,0.8);
 }
 
-#faux-select-wrapper #menu ul li {
+#faux-select-wrapper #place-menu ul li,
+#faux-select-wrapper #borough-menu ul li {
 	padding: 10px 10px;
 	text-align: center;
 	text-transform: uppercase;
@@ -93,7 +121,8 @@ header h1 {
 	color: white;
 }
 
-#faux-select-wrapper #menu ul li:hover {
+#faux-select-wrapper #place-menu ul li:hover,
+#faux-select-wrapper #borough-menu ul li:hover {
 	background: #000;
 	color: #FF7373;
 }

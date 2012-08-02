@@ -33,22 +33,20 @@ $(document).ready(function(){
 	}
 	
 	/*---------------------------------------------------------------------------*\
-		Dropdown Menu
+		Faux-select Menu
 	\*---------------------------------------------------------------------------*/
-	// Show toggle place menu visibility
-	$('#faux-select').click( function() { 
-		var $menu = $('#menu');
-		if(!$menu.hasClass('opened')) {
-			$menu.show();
-			$menu.addClass('opened'); 
-		} else {
-			$menu.hide();
-			$menu.removeClass('opened');
+	// Show toggle borough menu visibility
+	$('#borough-select').click( function() { 
+		var $b_menu = $('#borough-menu');
+		if(!$b_menu.hasClass('opened')) {
+			$b_menu.show();
+			$b_menu.addClass('opened');
 		}
 	});
 	
-	$('#menu ul li').click( function() {
-		if($(this).attr('id') == 'everything') {
+	// Click item in borough menu
+	$('#borough-menu ul li').click( function() {
+		if( $(this).attr('id') == 'everything') {
 			stopAllBouncing();
 			closeAllInfoWindows();
 			
@@ -56,22 +54,49 @@ $(document).ready(function(){
 			map.panTo(new google.maps.LatLng(40.714997,-73.897133));
 			map.setZoom(12);
 			
-			// Reset #faux-select and #info_block
-			$('#info_block .content').html('<p>Nothing Selected</p>');
-			$('#faux-select').html('Select A Place');
+			// Reset #borough-select
+			$('#borough-select').html('Find A Place');
+			
+			// Hide #place-selected and #borough-menu
+			$('#place-selected').hide();
+			$('#borough-menu').hide();
+			$('#borough-menu').removeClass('opened');
 			
 			// Hide info_block
+			$('#info_block .content').html('<p>Nothing Selected</p>');
 			$('#info_block').slideUp(300);
-			
 		} else {
-			// Grab place id
-			var place_id = $(this).attr('id') - 1;
-
-			updatePageView(json.place[place_id], map);
+			// Update #borough-select
+			var borough = $(this).text();
+			$('#borough-select').html(borough);
+			$('#borough-menu').hide();
+			$('#borough-menu').removeClass('opened');
+		
+			// Open the place-menu
+			var $b_menu = $('#place-menu');
+			if(!$b_menu.hasClass('opened')) {
+				$b_menu.show();
+				$b_menu.addClass('opened'); 
+			}
 		}
+	});
+	
+	// Click item in place menu
+	$('#place-menu ul li').click( function() {
+		// Grab place id
+		var place_id = $(this).attr('id') - 1;
+
+		updatePageView(json.place[place_id], map);
+		
 		// Hide menu
-		$('#menu').hide();
-		$('#menu').removeClass('opened');
+		$('#place-menu').hide();
+		$('#place-menu').removeClass('opened');
+	});
+	
+	// Click place-selected
+	$('#place-selected').click( function(){
+		$('#place-menu').show();
+		$('#place-menu').addClass('opened');
 	});
 
 }); // End document ready function
@@ -136,7 +161,7 @@ function addMarker(latlng, map, place) {
 	// Add updateInfoBlock() to marker clicks
 	google.maps.event.addListener(marker, 'click', function(){
 		updatePageView(place, map);
-		var $menu = $('#menu');
+		var $menu = $('#place-menu');
 		if($menu.hasClass('opened')) {
 			$menu.hide();
 			$menu.removeClass('opened');
@@ -154,8 +179,9 @@ function updatePageView(place, map) {
 	// Close #info_block
 	$('#info_block').slideUp(300);
 	
-	// Update #faux-select
-	$('#faux-select').html(place.name);
+	// Update and show #place-selected
+	$('#place-selected').html(place.name);
+	$('#place-selected').show();
 	
 	// Update map
 	stopAllBouncing();
