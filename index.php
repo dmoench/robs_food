@@ -44,7 +44,7 @@
 		<div id="place-menu">
 			<ul>
 				<?php for($i = 0; $i < count($xml_data->place); $i++): ?>
-				<li id="<?php echo $xml_data->place[$i]->id; ?>">
+				<li id="<?php echo $xml_data->place[$i]->id; ?>" type="<?php echo $xml_data->place[$i]->borough; ?>">
 					<?php echo $xml_data->place[$i]->name . ' (' . 
 							$xml_data->place[$i]->type . ')'; ?>
 				</li>

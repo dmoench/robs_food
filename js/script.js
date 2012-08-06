@@ -1,5 +1,6 @@
 var markers = new Array(); // Array to store marker references
 var infoWindows = new Array(); // Array to store info windows
+var boroughs_array = new Array('Manhattan','Brooklyn','Queens','Bronx','Staten Island');
 
 $(document).ready(function(){
 	// Grab json for easy manipulation
@@ -46,6 +47,11 @@ $(document).ready(function(){
 	
 	// Click item in borough menu
 	$('#borough-menu ul li').click( function() {
+		// clear previous filter settings from place-menu
+		$('#place-menu ul li').each( function(){
+			$(this).css('display','block');
+		});
+		
 		if( $(this).attr('id') == 'everything') {
 			stopAllBouncing();
 			closeAllInfoWindows();
@@ -57,8 +63,10 @@ $(document).ready(function(){
 			// Reset #borough-select
 			$('#borough-select').html('Find A Place');
 			
-			// Hide #place-selected and #borough-menu
+			// Hide menus
 			$('#place-selected').hide();
+			$('#place-menu').hide();
+			$('#place-menu').removeClass('opened');
 			$('#borough-menu').hide();
 			$('#borough-menu').removeClass('opened');
 			
@@ -71,6 +79,13 @@ $(document).ready(function(){
 			$('#borough-select').html(borough);
 			$('#borough-menu').hide();
 			$('#borough-menu').removeClass('opened');
+		
+			// Hide items in the place-menu that don't match clicked borough
+			$('#place-menu ul li').each( function(){
+				if($(this).attr('type') != borough) {
+					$(this).css('display','none');
+				}
+			});
 		
 			// Open the place-menu
 			var $b_menu = $('#place-menu');
