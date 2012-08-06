@@ -47,7 +47,7 @@ $(document).ready(function(){
 	
 	// Click item in borough menu
 	$('#borough-menu ul li').click( function() {
-		// clear previous filter settings from place-menu
+		// Clear previous filter settings from place-menu
 		$('#place-menu ul li').each( function(){
 			$(this).css('display','block');
 		});
@@ -79,6 +79,9 @@ $(document).ready(function(){
 			$('#borough-select').html(borough);
 			$('#borough-menu').hide();
 			$('#borough-menu').removeClass('opened');
+			// TODO - add something to indicate a borough has been selected.
+			// So the next time the user opens the borough menu (before reseting)
+			// they'll be able to see which borough the place-menu's state represents
 		
 			// Hide items in the place-menu that don't match clicked borough
 			$('#place-menu ul li').each( function(){
@@ -86,6 +89,8 @@ $(document).ready(function(){
 					$(this).css('display','none');
 				}
 			});
+			
+			// TODO - possibly color the map markers in that borough?
 		
 			// Open the place-menu
 			var $b_menu = $('#place-menu');
